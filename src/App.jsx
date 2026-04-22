@@ -1,12 +1,10 @@
-import Card from "./Topic-1 Rules of JSX/Card";
-import List from "./Topic-1 Rules of JSX/List";
+import Parent from "./Topic-2 Props/Parent"
 
 const App = () => {
   return (
-    <>
-      <Card />
-      <List />
-    </>
+    <div className="app-component">
+        <Parent/>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import Parent from "./Topic-2 Props/Parent"
+import Parent from "./Topic-4 map fn/Parent"
 
 const App = () => {
   return (

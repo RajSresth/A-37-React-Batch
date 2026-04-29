@@ -1,9 +1,12 @@
-import UL from "./Topic-5 map fn revision/UL"
+// import Counter from "./Topic-7 React state variable/Counter"
+import Home from "./Topic-8 Conditional Rendering/Home";
 
 const App = () => {
+  
   return (
-    <div id="app-component">
-        <UL/>
+    <div id="app">
+        {/* <Counter /> */}
+        <Home/>
     </div>
   );
 };

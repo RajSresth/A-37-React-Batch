@@ -1,0 +1,15 @@
+.shimmer-container{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 100px;
+}
+
+.shimmer-container .box{
+    width: 260px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: lightgray;
+}

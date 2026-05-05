@@ -1,15 +1,22 @@
+import { Route,Routes } from "react-router-dom";
+import Dashboard from "./Topic-13 React Lifecycle FBC/Dashboard";
+import Profile from "./Topic-13 React Lifecycle FBC/Profile"
+import Page from "./Topic-13 React Lifecycle FBC/Page"
+import Home from "./Topic-13 React Lifecycle FBC/Home";
 
-// import Toggle from "./Topic-11 useEffect Hook/Toggle"
-// import Counter from "./Topic-10 Lazy Initialization/Counter"
-import Shop from "./Topic-12 useEffect Realword/Shop";
+
 
 
 const App = () => {
   
   return (
-    <div id="app">
-        <Shop/>     
-    </div>
+   <Routes>
+      <Route path="/" element={<Page />} >
+            <Route  index element={<Home/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route path="/profile" element={<Profile/>} />
+      </Route>
+   </Routes>
   );
 };
 

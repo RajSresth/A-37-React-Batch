@@ -231,60 +231,169 @@ The Commit Phase is the second and final phase of React’s reconciliation proce
   - useEffect() (after browser paint)
 
 # 19. what is State?
-  - State in React is an internal, mutable data structure that represents the dynamic data of a component.
-  - whenever state variable changes react will re-render the component.
+
+- State in React is an internal, mutable data structure that represents the dynamic data of a component.
+- whenever state variable changes react will re-render the component.
 
 # 20. Difference between state and props?
 
 ### props
+
 1. Props are Immutable
 2. Props are used for passing data from one component to another component.
 3. Props are owned and controlled by the parent component.
 4. The child component only receives and consumes them.
 
 ### state
+
 1. State is Mutable
 2. State is internal to the component.
 3. The component that declares it can directly read or update it.
 4. State Update Triggers Re-render
 
-
 # 21. What is Hooks?
+
 - Hooks are special built-in functions in React that allow you to use state and other React features (like lifecycle methods, context, refs, etc.) in functional components.
 
 #### Features
-- Hooks introduced in React 16.8 
+
+- Hooks introduced in React 16.8
 - Hooks allow Functional Components to be Stateful
 - Hooks Start with "use"
 - Enable Better Code Reuse
 
-
 # 22. What is useState Hook?
-1. "useState is a built-in React Hook that allows you to add and manage local state in functional components. 
+
+1. "useState is a built-in React Hook that allows you to add and manage local state in functional components.
 2. It returns an array with two elements: the current state value and a function to update that state."
+
 #### syntax
+
 ```
 const [state, setState] = useState(initialValue);
 ```
+
 - state → Current value of the state (read-only)
 - setState → Function used to update the state
 - initialValue → Initial value of the state (can be number, string, boolean, object, array, etc.)
 
 # 23. What is Batching?
-- Batching in React is the process where React groups multiple state updates into a single re-render instead of re-rendering the component after every individual state update. 
+
+- Batching in React is the process where React groups multiple state updates into a single re-render instead of re-rendering the component after every individual state update.
 - This improves performance by reducing unnecessary re-renders.
 
 # 24. what is conditional Rendering?
+
 - Conditional Rendering in React is the technique of rendering different UI elements or components based on certain conditions.
 - Here we use if-else, ternary operator and logical operator(short circuit operator).
 
 # 25. can we write function as an initial value in useState(fn) Lazy Initialization?
+
 - "Lazy Initialization in useState is a technique where we pass a function as the initial value to useState. React calls this function only once during the initial render of the component and uses its return value as the initial state.
 - This is useful for expensive computations that should not run on every re-render."
+
 #### syntax
+
 ```
 const [state, setState] = useState(() => {
   // This function runs ONLY ONCE during initial render
   return expensiveComputation();
 });
+```
+
+## 26. what is useEffect?
+
+The useEffect hook is a built-in React function that allows you to perform side effects in functional components.
+
+Side effects are operations that interact with systems outside of React's (like api call).
+
+### 1. No dependency array - runs after every render
+
+#### syntax
+
+```
+useEffect(() => {
+  console.log("runs after every render");
+});
+```
+
+### 2. Empty dependency array - runs once on mount
+
+#### syntax
+
+```
+useEffect(() => {
+  console.log("runs once, like componentDidMount");
+}, []);
+```
+
+### 3. With dependencies - runs when those values change
+
+#### syntax
+
+```
+useEffect(() => {
+  console.log("runs when count or name changes");
+}, [count, name]);
+```
+
+## 27. difference between useState and useEffect Hook?
+
+#### useState:
+
+- Used to add and manage state (data) in functional components.
+- Returns an array with 2 values: [currentState, setState].
+- Updating state with setState() triggers a re-render of the component.
+- Preserves value between re-renders.
+
+### useEffect:
+
+- Used to perform side effects (actions outside normal rendering).
+- Runs after the component renders (and after paint in most cases).
+- Common uses: data fetching, DOM manipulation, subscriptions, timers, event listeners.
+- The useEffect hook itself does not return any value (it returns undefined).
+
+## 28. what is React lifecycle methods in Function Based Component?
+
+    Every React component goes through 3 phases in its life:
+
+      MOUNT  →  UPDATE  →  UNMOUNT
+      (born)    (changes)   (dies)
+
+#### Phase 1: MOUNTING
+
+    - Component is created and inserted into the DOM for the first time.
+    - On Mounting phase useEffect Runs only once after component is added to DOM.
+
+    ```
+      useEffect(() => {
+        console.log("runs once, like componentDidMount");
+      }, []);
+    ```
+
+#### Phase 2: Updating
+
+- Component re-renders due to state or prop changes.
+- On Updating Phase useEffect runs when a specific value changes.
+
+```
+  useEffect(() => {
+    console.log("runs when count or name changes");
+  }, [count, name]);
+```
+
+#### Phase 3: Unmounting
+
+- Component is removed from the DOM.
+- useEffect cleanup function will be called in this phase
+
+```
+useEffect(() => {
+console.log("runs when count or name changes");
+
+
+return () => {
+      console.log("Cleanup function);  // This cleanup function will be called
+}
+}, []);
 ```

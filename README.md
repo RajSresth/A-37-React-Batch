@@ -397,3 +397,75 @@ return () => {
 }
 }, []);
 ```
+
+
+# 29. what is Single Page Application?
+A Single Page Application is a web app that loads a single HTML document and dynamically updates the DOM using JavaScript instead of requesting new pages from the server on each navigation.
+
+# 30. what is Multi Page Application?
+A Multi-Page Application (MPA) is a traditional web architecture where every user interaction—like clicking a link or submitting a form—triggers a full browser refresh to load a completely new HTML page from the server.
+
+
+# 31. Difference between SPA and MPA?
+Aspect:                SPA                  MPA
+Page Loads:      One initial load       Full reload per page
+Performance:     Faster navigation      Slower navigation
+SEO:             Harder (needs SSR)     Naturally good
+Development:     Usually one codebase   Traditional (multiple pages)
+Initial Load:     Slightly high         Low
+
+# 32. what is client side routing?
+Client-side routing is when the navigation between pages is handled  by JavaScript in the browser. Instead of requesting a new page from the server, the JavaScript libraries (like React Router, Vue Router) updates the URL using the History API and renders the appropriate component/view without reloading the page.
+
+# 33. what is Server side routing?
+Server-side routing is the traditional method where the browser sends a request to the server for every new URL; the server then generates and sends back a complete HTML page, causing a full browser refresh.
+
+# 34. what is react-router-dom ?
+React Router DOM is a popular library for client-side routing in React applications. It allows you to create a Single Page Application (SPA) and navigate between them without full page reloads.
+
+# 35. what is createBrowserRouter and BrowserRouter?
+### createBrowserRouter:
+A function introduced in React Router v6.4+ that creates a router instance using the History API. It is the recommended way to define routes as it supports data APIs like loaders, actions, and fetchers.
+### BrowserRouter:
+A component that wraps your app and enables client-side routing using the History API. It does not support React Router v6.4+ data APIs like loaders and actions.
+
+# 36. Difference between Link and NavLink?
+### Link
+- A component that renders an anchor tag and navigates(move) to a route without a full page reload.
+- Used in for general navigation (e.g., a "Read More" button or a link in a footer).
+
+### Navlink
+- Same as Link but applies an active class when its route matches the current URL.
+- Used in Navbar or Dashboard tabs.
+
+# 37. what is an Outlet?
+A component used in parent routes that acts as a placeholder where the matched child route's component gets rendered.
+#### Syntax
+```
+function Dashboard() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <Outlet /> {/* child route renders here */}
+    </div>
+  );
+}
+```
+
+
+# 38. what is index prop?
+A boolean prop on a route that marks it as the default child route, rendered inside the parent's Outlet when no other child route matches.
+
+#### Syntax
+```
+const router = createBrowserRouter([
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      { index: true, element: <DashboardHome /> }, // renders when path is exactly /dashboard
+      { path: "settings", element: <Settings /> },
+    ],
+  },
+]);
+```

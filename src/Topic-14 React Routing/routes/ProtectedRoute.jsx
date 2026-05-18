@@ -1,10 +1,13 @@
 import React from 'react'
-import {Navigate, useNavigate, Outlet} from "react-router-dom"
+import {Navigate, useNavigate, Outlet, useOutletContext} from "react-router-dom"
 
 /**
  * ! 1st way
  */
 const ProtectedRoute = () => {
+
+   const context = useOutletContext();
+   console.log("user:",context.username); // chombu
     const login = true;
 
     if(!login)
@@ -12,7 +15,7 @@ const ProtectedRoute = () => {
         return <Navigate to="/login" replace />
     }
 
-  return <Outlet/>
+  return <Outlet context={{username:context.username, job:context.job}}/>
 }
 
 export default ProtectedRoute

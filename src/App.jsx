@@ -4,11 +4,14 @@ import Header from './Topic-14 React Routing/components/Header'
 
 
 const App = () => {
+
+  const user={username: "chombu", job: "Fullstack Dev"}
+
   return (
     <div id="app">
-      <Header/>
+      <Header />
 
-      <Outlet />
+      <Outlet context={user} />
     </div>
   )
 }

@@ -99,14 +99,13 @@ a.active {
   border-radius: 15px;
 }
 
-
 /* -------------------------
      Home Layout
 ----------------------------*/
-#home{
+#home {
   min-height: calc(100vh - 100px);
 }
-#home .center-container{
+#home .center-container {
   max-width: 1200px;
   width: 100%;
   min-height: inherit;
@@ -119,12 +118,11 @@ a.active {
   padding: 50px 0px;
 }
 
-
 /*------------------------
   Card Design
 --------------------------*/
 
-.card{
+.card {
   width: 260px;
   height: 300px;
   overflow: hidden;
@@ -135,59 +133,56 @@ a.active {
   position: relative;
 }
 
-.card .profile{
+.card .profile {
   height: 65%;
   overflow: inherit;
   border-radius: 15px;
   border: 1px solid rgb(194, 192, 192);
 }
 
-
-.card .profile img{
+.card .profile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.card .info .title{
+.card .info .title {
   font-size: 14px;
   padding: 5px 0px;
   font-weight: bold;
   color: black;
 }
 
-.card .info .description{
+.card .info .description {
   color: rgb(101, 100, 100);
 }
 
-.card .info .price{
+.card .info .price {
   font-size: 15px;
-  padding:5px 0px;
+  padding: 5px 0px;
   color: black;
 }
-.card .info .category{
-  padding:5px 20px ;
+.card .info .category {
+  padding: 5px 20px;
   letter-spacing: 1px;
   background-color: rgba(0, 0, 0, 0.804);
-  color: white;  
+  color: white;
   font-size: 10px;
   border-radius: 5px;
   position: absolute;
   top: 13px;
-  left: 13px;  
+  left: 13px;
   text-transform: capitalize;
 }
-
-
 
 /*------------------------
    Product Page
 -------------------------*/
-.product-page{
+.product-page {
   min-height: calc(100vh - 100px);
 }
 
-.product-page .center-container{
+.product-page .center-container {
   max-width: 1200px;
   width: 100%;
   min-height: inherit;
@@ -195,55 +190,51 @@ a.active {
   display: flex;
 }
 
-
-.product-page .center-container .left{
+.product-page .center-container .left {
   width: 50%;
   min-height: inherit;
   padding: 35px;
 }
 
-
-.product-page .center-container .image-container{
+.product-page .center-container .image-container {
   width: 500px;
   height: 450px;
   border: 1px solid rgb(208, 208, 208);
   border-radius: 15px;
-} 
+}
 
-.product-page .center-container .left .image-container img{
+.product-page .center-container .left .image-container img {
   width: 100%;
   height: 100%;
   object-fit: fill;
 }
 
-.product-page .center-container .right{
+.product-page .center-container .right {
   width: 50%;
   min-height: inherit;
   padding: 35px;
 }
 
-
-.product-page .right .title{
+.product-page .right .title {
   font-weight: bold;
   font-size: 32px;
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
-
-.product-page .right .description{
+.product-page .right .description {
   font-size: 20px;
   line-height: 1.25;
   color: rgb(149, 147, 147);
-  margin-bottom:10px;
+  margin-bottom: 10px;
   text-align: justify;
 }
 
-.product-page .right .tags-container{
+.product-page .right .tags-container {
   display: flex;
   gap: 15px;
 }
-.product-page .right .tags{
+.product-page .right .tags {
   padding: 5px 25px;
   border-radius: 15px;
   background-color: #e2e0e0;
@@ -252,41 +243,254 @@ a.active {
   font-size: 13px;
 }
 
-.product-page .right .price{
-  font-size:20px ;
+.product-page .right .price {
+  font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
 }
 
-
-.cart-container{
+.cart-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.cart-container .qty-container{
+.cart-container .qty-container {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-.cart-container .qty-container button{
+.cart-container .qty-container button {
   padding: 7px 15px;
   border: none;
   border-radius: 5px;
   background-color: rgb(216, 213, 213);
   font-size: 18px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.cart-container .add-cart{
+.cart-container .add-cart {
   width: 80%;
-  padding-block:13px;
-  cursor:pointer;
+  padding-block: 13px;
+  cursor: pointer;
   color: #222;
   font-weight: bold;
   background-color: #d8d6d6;
   border: none;
   outline: none;
   border-radius: 7px;
+}
+
+/*-------------------------------
+    Profile Page
+--------------------------------*/
+
+#profile {
+  min-height: calc(100vh - 100px);
+}
+
+#profile .center-container {
+  max-width: 1200px;
+  width: 100%;
+  min-height: inherit;
+  margin: auto;
+  display: flex;
+}
+
+#profile .center-container .left {
+  width: 50%;
+  min-height: inherit;
+  padding: 35px;
+}
+
+#profile .center-container .image-container {
+  width: 500px;
+  height: 450px;
+  border: 1px solid rgb(208, 208, 208);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#profile .center-container .left .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+#profile .center-container .right {
+  width: 50%;
+  min-height: inherit;
+  padding: 35px;
+}
+
+#profile .right .title {
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/*----------------------------
+   Error Page
+-----------------------------*/
+
+.error-page {
+  height: calc(100vh - 100px);
+  background-color: #fff;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-inline: 16px;
+}
+
+.error-page .heading {
+  font-size: 60px;
+  color: lightgrey;
+}
+
+.error-page .message {
+  font-weight: bold;
+  margin-top: 16px;
+  color: rgb(132, 131, 131);
+  font-size: 24px;
+}
+
+.error-page .description {
+  font-size: 16px;
+  color: grey;
+  margin-top: 8px;
+}
+
+.error-page button {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  background-color: #222;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+/*---------------------------
+  Signup Form
+----------------------------*/
+
+.signup-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container .register-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 20px;
+  background-color: #fff;
+  border: 0.5px solid rgb(186, 184, 184);
+  padding: 35px 40px 60px;
+  border-radius: 15px;
+}
+
+.signup-container .register-form .form-logo {
+  width: 80px;
+  height: 80px;
+  background-color: #222;
+  border-radius: 50%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.signup-container .register-form h2 {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container .register-form .error-text {
+  padding: 7px 16px;
+  font-size: 14px;
+  width: 100%;
+  background-color: rgb(249, 218, 218);
+  border-left: 4px solid crimson;
+  border-radius: 5px;
+}
+
+.signup-container .register-form input,
+button {
+  width: 100%;
+  padding: 12px 16px;
+  outline: none;
+  border: 0.5px solid rgb(186, 184, 184);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.signup-container .register-form label {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.signup-container .register-form label sup {
+  color: crimson;
+  font-size: 15px;
+}
+
+.signup-container .register-form input {
+  margin-top: 5px;
+}
+
+.signup-container .register-form button[type="submit"] {
+  background-color: #222;
+  color: white;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.signup-container .register-form button[type="reset"] {
+  background-color: #222;
+  color: white;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.signup-container .register-form span {
+  text-align: center;
+  color: grey;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.signup-container .register-form span a {
+  color: blue;
+}
+
+.signup-container .password-container {
+  position: relative;
+}
+
+.password-container .show-password {
+  position: absolute;
+  right: 14px;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }

@@ -18,7 +18,7 @@ import Signup from "./Topic-14 React Routing/pages/Signup";
 import ProtectedRoute from "./Topic-14 React Routing/routes/ProtectedRoute";
 
 // apis
-import { getUserProfile } from "./Topic-14 React Routing/services/api";
+import { getUserProfile, handleSignup } from "./Topic-14 React Routing/services/api";
 import ErrorPage from "./Topic-14 React Routing/pages/ErrorPage";
 
 
@@ -60,6 +60,8 @@ const appRouter = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+    action: handleSignup,
+    errorElement:<ErrorPage />
   },
   {
     path: "*",

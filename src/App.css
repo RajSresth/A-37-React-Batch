@@ -428,6 +428,15 @@ a.active {
   border-radius: 5px;
 }
 
+.signup-container .register-form .success-text{
+  padding: 7px 16px;
+  font-size: 14px;
+  width: 100%;
+  background-color: rgb(218, 249, 236);
+  border-left: 4px solid rgb(17, 110, 57);
+  border-radius: 5px;
+}
+
 .signup-container .register-form input,
 button {
   width: 100%;

@@ -902,3 +902,50 @@ const Signup = () => {
     );
 };
 ```
+## 56. Difference between useState and useRef ?
+1. Purpose:
+```
+useState: Used to manage state that affects the UI (reactive state).
+useRef: Used to store mutable values that persist across renders.
+```
+
+2. Re-rendering:
+```
+useState: Updating state causes the component to re-render.
+useRef: Updating ref.current does not cause re-render.
+```
+
+3. Syntax:
+```
+useState: const [value, setValue] = useState(initialValue)
+useRef: const ref = useRef(initialValue)
+```
+
+4. Access & Update:
+```
+useState: Update using setValue(newValue)
+useRef: Update directly ref.current = newValue
+```
+5. Use Cases:
+```
+useState: Form inputs, counters, toggles, fetched data, UI-dependent values.
+useRef: DOM references (focus, scroll), previous value tracking, timers, mutable flags.
+```
+
+6. Performance:
+```
+useState: Can be expensive due to re-renders on every update.
+useRef: Lightweight, no re-renders.
+```
+
+7. When to Use:
+```
+Use useState when you want the UI to update when value changes.
+Use useRef when you just need to "remember" a value without UI update.
+```
+## 57. Difference between Controlled Form and Uncontrolled Form? 
+**Controlled:** React controls the form using state + value + onChange.
+Controlled needs more code but gives better control & validation.
+
+**Uncontrolled:** DOM controls the form (using defaultValue or ref).
+Uncontrolled is simpler and faster but harder to validate.

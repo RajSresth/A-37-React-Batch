@@ -20,6 +20,7 @@ import ProtectedRoute from "./Topic-14 React Routing/routes/ProtectedRoute";
 // apis
 import { getUserProfile, handleSignup } from "./Topic-14 React Routing/services/api";
 import ErrorPage from "./Topic-14 React Routing/pages/ErrorPage";
+import Login from "./Topic-14 React Routing/pages/Login";
 
 
 // Routing configuration
@@ -62,6 +63,10 @@ const appRouter = createBrowserRouter([
     element: <Signup />,
     action: handleSignup,
     errorElement:<ErrorPage />
+  },
+  {
+    path: "/login",
+    element: <Login/>
   },
   {
     path: "*",

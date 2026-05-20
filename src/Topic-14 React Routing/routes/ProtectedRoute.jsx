@@ -1,24 +1,26 @@
-import React from 'react'
-import {Navigate, useNavigate, Outlet, useOutletContext} from "react-router-dom"
+import React from "react";
+import {
+  Navigate,
+  useNavigate,
+  Outlet,
+  useOutletContext,
+} from "react-router-dom";
 
 /**
  * ! 1st way
  */
 const ProtectedRoute = () => {
+  const context = useOutletContext();
+  const login = true;
 
-   const context = useOutletContext();
-   console.log("user:",context.username); // chombu
-    const login = true;
+  if (!login) {
+    return <Navigate to="/login" replace />;
+  }
 
-    if(!login)
-    {
-        return <Navigate to="/login" replace />
-    }
+  return <Outlet context={{ username: context.username, job: context.job }} />;
+};
 
-  return <Outlet context={{username:context.username, job:context.job}}/>
-}
-
-export default ProtectedRoute
+export default ProtectedRoute;
 
 /** 
  * ! 2nd way

@@ -1,18 +1,40 @@
 import React from "react";
 
-const Child = ({result}) => {
+const Child = ({greet, user}) => {
   console.log("Child Render");
+  greet()
+  
   return (
     <div>
       <h1 style={{ textAlign: "center", marginTop: "40px" }}>
         Child Component
       </h1>
-      <h3>Heavy Calculation Result: {result}</h3>
+      <h3>Username: {user?.fullname}</h3>
+      <h3>Age: {user?.age}</h3>
     </div>
   );
 };
 
 export default React.memo(Child);
+
+/**
+ * prev = greet - 01x1 
+ *        user  - 01y1
+ * next = greet - 01x1 
+ *        user  - 01y1
+ */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**

@@ -1,11 +1,12 @@
 import {useState,useRef} from "react";
 import { useOutletContext } from "react-router-dom";
+import Child from "../components/Child";
 
 const Order = () => {
   const [count,setCount] = useState(0);
-  const count2 = useRef(0);   // count2 = {current: 0}
+  const count2 = useRef(0);  
 
-  console.log("Order Render","Ref:",count2.current, "state:",count);
+  console.log("Order Render");
 
   const handleClick = () => {
     count2.current = count2.current + 1;
@@ -28,6 +29,8 @@ const Order = () => {
           <h2>Count2: {count2.current}</h2>
           <button onClick={handleClick}>Add Count</button>
         </div>
+
+        <Child/>
       </div>
     </div>
   );

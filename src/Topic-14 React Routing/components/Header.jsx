@@ -1,12 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const setClass = ({ isActive }) => (isActive ? "active" : "");
   return (
     <header>
       <div className="center-container">
-        <div className="logo">QuickMart</div>
+        <div className="logo">
+          <Link to="/" style={{ color: "black" }}>
+            QuickMart
+          </Link>
+        </div>
         <nav>
           <NavLink to="/" className={setClass}>
             Home

@@ -1,18 +1,44 @@
 import { useState } from "react";
-import { Link, useActionData } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FaUserSecret } from "react-icons/fa";
-import { Form } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const data = useActionData()
+  const navigate = useNavigate()
+
+
+  const handleSignupForm = async (e) => {
+    e.preventDefault();
+
+    try {
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+      const {data} = await axios.post(
+        `${serverUrl}/register`,
+        {
+          fullname,
+          email,
+          password,
+        },
+        { withCredentials: true },
+      );
+
+      console.log("signup-response:",data);
+      navigate("/login", {replace:true})
+    } catch (error) {
+      setError(error?.response?.data)
+    }
+  };
 
   return (
     <div className="signup-container">
-      <Form method="POST" className="register-form">
+      <form onSubmit={handleSignupForm} className="register-form">
         <div>
           <div className="form-logo">
             <FaUserSecret size={40} />{" "}
@@ -20,8 +46,7 @@ const Signup = () => {
           <h2> Signup</h2>
         </div>
 
-        {error && <p className="error-text">{"All fields required"}</p>}
-        {data?.message && <p className="success-text">{data?.message}</p>}
+        {error && <p className="error-text">{error?.message}</p>}
 
         {/* username */}
         <div>
@@ -32,6 +57,8 @@ const Signup = () => {
             type="text"
             id="inp1"
             name="fullname"
+            value={fullname}
+            onChange={(e) => setFullname(e.target.value)}
             placeholder="Enter fullname"
             required
           />
@@ -46,6 +73,8 @@ const Signup = () => {
             type="email"
             id="inp2"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
             required
           />
@@ -61,6 +90,8 @@ const Signup = () => {
               type={showPassword ? "text" : "password"}
               id="inp3"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="At least 8 characters"
               required
             />
@@ -79,7 +110,7 @@ const Signup = () => {
         <span>
           Already have an account? <Link to="/login">login</Link>
         </span>
-      </Form>
+      </form>
     </div>
   );
 };

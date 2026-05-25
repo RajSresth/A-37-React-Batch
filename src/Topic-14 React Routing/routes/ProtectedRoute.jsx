@@ -1,23 +1,16 @@
 import React from "react";
-import {
-  Navigate,
-  useNavigate,
-  Outlet,
-  useOutletContext,
-} from "react-router-dom";
-
+import { Navigate, Outlet } from "react-router-dom";
+import {useAuth} from "../store/AuthContext";
 /**
  * ! 1st way
  */
 const ProtectedRoute = () => {
-  const context = useOutletContext();
-  const login = true;
+    const {userData, setUserData} = useAuth();  
+   
 
-  if (!login) {
-    return <Navigate to="/login" replace />;
-  }
+  
 
-  return <Outlet context={{ username: context.username, job: context.job }} />;
+  return userData ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default ProtectedRoute;

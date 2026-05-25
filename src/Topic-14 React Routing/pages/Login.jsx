@@ -1,27 +1,43 @@
-import { useRef, useState } from "react";
-import { Link} from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FaUserSecret } from "react-icons/fa";
-import { Form } from "react-router-dom";
+import axios from "axios";
+import { useAuth } from "../store/AuthContext";
 
 const Login = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const email = useRef("");
-    const password = useRef("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
 
-    console.log("Login Render");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-    const handleSubmit = () => {
-        console.log("email:",email.current.value);
-        console.log("password:",password.current.value);
+  const { setUserData } = useAuth();
 
-        email.current.value = "";
-        password.current.value = "";
+  const handleLoginForm = async (e) => {
+    e.preventDefault();
+
+    try {
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+
+      const { data } = await axios.post(
+        `${serverUrl}/login`,
+        { email, password },
+        { withCredentials: true },
+      );
+
+      setUserData(data?.user);
+      navigate("/", { replace: true });
+    } catch (error) {
+      console.log(error?.response?.data);
+      setError(error?.response?.data);
     }
+  };
 
   return (
     <div className="signup-container">
-      <Form onSubmit={handleSubmit} className="register-form">
+      <form onSubmit={handleLoginForm} className="register-form">
         <div>
           <div className="form-logo">
             <FaUserSecret size={40} />{" "}
@@ -29,6 +45,7 @@ const Login = () => {
           <h2>Login</h2>
         </div>
 
+        {error && <p className="error-text">{error?.message}</p>}
 
         {/* Email */}
         <div>
@@ -39,7 +56,8 @@ const Login = () => {
             type="email"
             id="inp2"
             name="email"
-            ref={email}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
             required
           />
@@ -55,7 +73,8 @@ const Login = () => {
               type={showPassword ? "text" : "password"}
               id="inp3"
               name="password"
-              ref={password}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="At least 8 characters"
               required
             />
@@ -74,9 +93,9 @@ const Login = () => {
         <span>
           Create Your Account? <Link to="/signup">signup</Link>
         </span>
-      </Form>
+      </form>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

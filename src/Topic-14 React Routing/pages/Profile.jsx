@@ -2,10 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  // const userdata = useLoaderData();
+ 
   const navigate = useNavigate();
-
-  console.log("Profile Render");
+  console.log("Profile");
 
 
   const handleClick = () => {

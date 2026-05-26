@@ -543,3 +543,57 @@ button {
   max-width: 50%;
   cursor:pointer;
 }
+
+
+
+
+#shop{
+  min-height: calc(100vh - 100px);
+  background-color: #fff;
+}
+
+#shop .center-container{
+  min-height:inherit;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 20px;
+  padding: 50px;
+}
+
+#shop .center-container .shop-details{
+  width: 500px;
+  height: 250px;
+  padding: 25px;
+  border: 1px solid rgb(176, 174, 174);
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px 0.25px lightgray;
+}
+
+:is(#shop.light,#shop.dark) h2{
+  margin-bottom: 15px;
+  color: black;
+}
+
+:is(#shop.light,#shop.dark)  p:nth-of-type(2)
+{
+  margin-top: 10px;
+}
+
+:is(#shop.light,#shop.dark)  button{
+  width: initial;
+  text-transform: capitalize;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+#shop.dark{
+  background-color: #222;
+}
+
+
+#shop.dark :is(p,h2){
+  color: white;
+}

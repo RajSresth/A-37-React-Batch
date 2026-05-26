@@ -28,6 +28,7 @@ const Login = () => {
       );
 
       setUserData(data?.user);
+      localStorage.setItem("user",JSON.stringify(data?.user))
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error?.response?.data);

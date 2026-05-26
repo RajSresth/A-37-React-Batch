@@ -949,3 +949,14 @@ Controlled needs more code but gives better control & validation.
 
 **Uncontrolled:** DOM controls the form (using defaultValue or ref).
 Uncontrolled is simpler and faster but harder to validate.
+
+
+## 58. What is Context API?
+- Context API is a built-in feature in React that allows you to share data (state, functions, etc.) across multiple components without passing props manually at every level
+- It solves the prop drilling problem.
+
+## 59. How Context API Works?
+
+1. **Create Context** – Using React.createContext()
+2. **Provide Context** – Wrap components with a Provider
+3. **Consume Context** – Access the value using useContext() hook in FBC (or Consumer in class components), In class based component we use **consumer** to take values from the store.

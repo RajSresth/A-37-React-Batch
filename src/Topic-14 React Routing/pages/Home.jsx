@@ -46,10 +46,11 @@ const Home = () => {
     <div id="home">
       <div className="center-container">
         {products.map((singleProduct) => {
-          const { title, category, price, description, images } = singleProduct;
+          const { id,title, category, price, description, images } = singleProduct;
           return (
             <Link  key={singleProduct.id} to={`/products/${singleProduct.id}?category=beauty&page=10`}>
-              <Card               
+              <Card        
+                id={id}       
                 title={title}
                 category={category}
                 price={price}

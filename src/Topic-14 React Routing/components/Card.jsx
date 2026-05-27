@@ -1,10 +1,30 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/cartSlice";
 
-const Card = ({ title, category, price, description, images }) => {
+
+const Card = ({ id,title, category, price, description, images }) => {
+  const dispatch = useDispatch()
+
   const customizeDescription =
     description.split(" ").length > 7
       ? description.split(" ").slice(0, 8).join(" ") + "..."
       : description;
+
+
+  const handleAddItem = () => { 
+    const item = {
+      id,
+      title,
+      category,
+      images,
+      description,
+      price
+    }
+    dispatch(addItem(item))
+  }
+
+
   return (
     <div className="card">
       <div className="profile">
@@ -14,7 +34,13 @@ const Card = ({ title, category, price, description, images }) => {
         <span className="category">{category}</span>
         <div className="title">{title}</div>
         <div className="description">{customizeDescription}</div>
-        <div className="price">&#x24; {price}</div>
+        <div className="cart-btn-container">
+          <div className="price">&#x24; {price}</div>
+          <div className="btn-box">
+            <button className="add-btn" onClick={handleAddItem}>Add</button>
+          </div>
+        </div>
+        
       </div>
     </div>
   );

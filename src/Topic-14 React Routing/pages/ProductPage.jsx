@@ -8,8 +8,7 @@ const ProductPage = () => {
   const { productId } = useParams();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("category"));
-  console.log(searchParams.get("page"));
+ 
 
   const changeSearchParams = () => {
     setSearchParams((prev) => {
@@ -36,7 +35,6 @@ const ProductPage = () => {
 
         if (!response.ok) throw new Error("Somthing went wrong");
         const data = await response.json();
-        console.log("data:", data);
         setSingleProduct(data);
       } catch (error) {
         if (error.name === "AbortError") {

@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
 
-  const cartItems = useSelector((state) => state.cart.items);
+  // cartItems = [{}, {}]
+  const cartItems = useSelector((state) => state?.cart?.items);
   const setClass = ({ isActive }) => (isActive ? "active" : "");
   return (
     <header>

@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  console.log("Home Render");
+
 
   useEffect(() => {
     const controller = new AbortController(); // step-1 controller creation
@@ -48,8 +48,9 @@ const Home = () => {
         {products.map((singleProduct) => {
           const { id,title, category, price, description, images } = singleProduct;
           return (
-            <Link  key={singleProduct.id} to={`/products/${singleProduct.id}?category=beauty&page=10`}>
-              <Card        
+           
+              <Card 
+                key={id}       
                 id={id}       
                 title={title}
                 category={category}
@@ -57,7 +58,7 @@ const Home = () => {
                 description={description}
                 images={images}
               />              
-            </Link>
+           
           );
         })}
       </div>

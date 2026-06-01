@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../redux/cartSlice";
+import { addItem, fetchUsers } from "../redux/cartSlice";
 
 const Card = ({ id, title, category, price, description, images }) => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Card = ({ id, title, category, price, description, images }) => {
       description,
       price,
     };
-    dispatch(addItem(item));
+    dispatch(fetchUsers());
   };
 
   return (

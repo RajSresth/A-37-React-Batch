@@ -1040,4 +1040,64 @@ When two or more components need to share the same state, instead of keeping the
 ![RTK](./RTK.png)
 
 
-## 72. What is Middleware?
+## 72. What is Custom Middleware(Local Middleware)?
+
+- Middleware is a function that sits between the dispatch of an action and the reducer. It can:
+  - Log actions
+  - Modify actions
+  - Dispatch additional actions
+  - Perform side effects (async logic)
+  - Block or delay actions
+  - Call APIs, etc.
+
+## 73. What is createAsyncThunk?
+1. createAsyncThunk is a utility function in Redux Toolkit that simplifies handling asynchronous operations (like API calls) in Redux.
+
+2. It automatically generates three action types — pending, fulfilled, and rejected — and manages the lifecycle of async requests, reducing boilerplate code.
+
+**What does it return?**
+It returns an action creator that, when called, returns a special action with a payload promise.
+
+
+## 74. What is useCallback hook?
+It is used to memoize functions so that the same function reference is passed to child components, preventing them from re-rendering unnecessarily when the parent re-renders.
+
+```
+  const fn = useCallback((e) => {
+    setData(e.target)
+  })
+```
+
+## 75. What is useMemo hook?
+It is used to memoize expensive calculations or large objects/arrays so they are not recomputed on every render."
+```
+  const val = useMemo(() => ({username: "Chombu singh", age: 24}))
+```
+
+## 76. What is React.memo ?
+1. React.memo is a performance optimization tool in React that wraps a functional component and stops it from re-rendering when its props are the same as the previous render. It does a shallow comparison of props.
+
+2. React.memo is Higher Order Component(HOC).
+```
+import React from 'react';
+
+const MyComponent = React.memo(function MyComponent(props) {
+  return <div>{props.name}</div>;
+});
+
+// Or using arrow function
+const MyComponent = React.memo(({ name }) => {
+  return <div>{name}</div>;
+});
+```
+
+
+
+- useTransition
+- useDefferedValue
+- useEffectEvent
+- pitfall of closure
+- Activity
+- React Lazy Loading
+- React Virtualization and Hydration
+- Class Based Component

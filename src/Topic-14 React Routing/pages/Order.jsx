@@ -1,30 +1,16 @@
-import {useState, useMemo, useCallback} from "react";
-import Child from "../components/Child";
+import React from "react";
+import { useGetSingleUserQuery } from "../redux/userApi";
 
 const Order = () => {
-  const [count, setCount] = useState(0); // count = 0
-  console.log("Parent Render")
+  const {data,error, isLoading} = useGetSingleUserQuery(1)
+  
+  if(isLoading) return <h2>Loading....</h2>
+  if(error) return <h2>{error}</h2>
 
-const greet = useCallback(() => console.log("Hello useCallback"),[]); // greet = 01x1
-
-  const user = useMemo(() => ({fullname: "Chombu Singh", age: 24}),[]);     // user = 01y1
- 
-
-  return (
-    <div id="order">
-      <div className="center-box">
-        <h2>Count: {count}</h2>
-        <button onClick={() => setCount(count + 1)}>Add Count</button>
-       
-        <Child greet={greet} user={user} />
-      </div>
-    </div>
-  );
+  return <div>
+    <h2>{data.name}</h2>
+    <h2>{data.email}</h2>
+  </div>;
 };
 
 export default Order;
-
-
-
-{/* <Order/>
-<Order/> */}

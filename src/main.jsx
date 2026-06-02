@@ -16,7 +16,7 @@ import Login from "./Topic-14 React Routing/pages/Login";
 import { AuthProvider } from "./Topic-14 React Routing/store/AuthContext";
 import { ThemeProvider } from "./Topic-14 React Routing/store/ThemeContext";
 import Cart from "./Topic-14 React Routing/pages/Cart";
-import { Provider } from "react-redux";
+import { Provider, } from "react-redux";
 import store from "./Topic-14 React Routing/redux/store";
 
 createRoot(document.getElementById("root")).render(
@@ -45,3 +45,5 @@ createRoot(document.getElementById("root")).render(
     </AuthProvider>,
   </Provider>
 );
+
+

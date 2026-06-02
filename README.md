@@ -1097,7 +1097,9 @@ const MyComponent = React.memo(({ name }) => {
 - useDefferedValue
 - useEffectEvent
 - pitfall of closure
-- Activity
+- Activity Component
 - React Lazy Loading
 - React Virtualization and Hydration
 - Class Based Component
+
+

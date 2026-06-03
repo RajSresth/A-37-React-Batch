@@ -4,24 +4,37 @@ import axios from "axios";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com",
+    baseUrl:"http://localhost:3000/api"
   }),
-  endpoints: (builder) => {
+  keepUnusedDataFor: 300,
+  tagTypes: ["Users"]
+  ,endpoints: (builder) => {
     return {
       getAllUsers: builder.query({
-        query: () => "/users",
+        query: () => "/user/getAll",
+       providesTags: ['Users']
       }),
       getSingleUser: builder.query({
-        query: (id) => `users/${id}`,
+        query: (id) => `/user/getSingle/${id}`,
       }),
+      createUser: builder.mutation({
+        query: (params) => ({
+          url: "/user/createUser",
+          method: "POST",
+          body: params
+        }),
+       invalidatesTags: ['Users']
+      })
     };
   },
 });
 
-export const { useGetAllUsersQuery, useGetSingleUserQuery } = userApi;
+export const { useGetAllUsersQuery, useLazyGetSingleUserQuery, useCreateUserMutation } = userApi;
 
 /**
- * ! useMutation Hook
+ * ! use *end-point* Query
+ * ! useLazy*end-point*Query
+ * ! use*end-point*Mutation Hook
  * ! transformReponse
  * ! transformErrorResponse
  * ! tags

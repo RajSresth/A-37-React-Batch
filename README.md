@@ -1103,3 +1103,5 @@ const MyComponent = React.memo(({ name }) => {
 - Class Based Component
 
 
+## 77. What is Polling?
+RTK Query polling means automatically re-fetching a query at a fixed time interval.

@@ -1,18 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import axios from "axios";
 
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl:"http://localhost:3000/api"
+    baseUrl: "http://localhost:3000/api",
   }),
   keepUnusedDataFor: 300,
-  tagTypes: ["Users"]
-  ,endpoints: (builder) => {
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
+  tagTypes: ["Users"],
+  endpoints: (builder) => {
     return {
       getAllUsers: builder.query({
-        query: () => "/user/getAll",
-       providesTags: ['Users']
+        query: () => "/user/get-all-users",
+        providesTags: ["Users"],
       }),
       getSingleUser: builder.query({
         query: (id) => `/user/getSingle/${id}`,
@@ -21,15 +22,19 @@ export const userApi = createApi({
         query: (params) => ({
           url: "/user/createUser",
           method: "POST",
-          body: params
+          body: params,
         }),
-       invalidatesTags: ['Users']
-      })
+        invalidatesTags: ["Users"],
+      }),
     };
   },
 });
 
-export const { useGetAllUsersQuery, useLazyGetSingleUserQuery, useCreateUserMutation } = userApi;
+export const {
+  useGetAllUsersQuery,
+  useLazyGetSingleUserQuery,
+  useCreateUserMutation,
+} = userApi;
 
 /**
  * ! use *end-point* Query
@@ -37,7 +42,10 @@ export const { useGetAllUsersQuery, useLazyGetSingleUserQuery, useCreateUserMuta
  * ! use*end-point*Mutation Hook
  * ! transformReponse
  * ! transformErrorResponse
- * ! tags
+ * ! tagTypes
+ * ! providesTags
+ * ! invalidatesTags
+ * ! polling
  * POST
  * PUT
  * PATCH

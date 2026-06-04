@@ -18,6 +18,14 @@ import { ThemeProvider } from "./Topic-14 React Routing/store/ThemeContext";
 import Cart from "./Topic-14 React Routing/pages/Cart";
 import { Provider, } from "react-redux";
 import store from "./Topic-14 React Routing/redux/store";
+import { userApi } from "./Topic-14 React Routing/redux/userApi";
+import "./Topic-14 React Routing/redux/PostApi.js"; // this registers getAllComments on userApi
+
+
+// prefetch before your react app render
+store.dispatch(
+  userApi.util.prefetch("getAllComments",undefined, { force: false, ifOlderThan: 10 }),
+)
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>

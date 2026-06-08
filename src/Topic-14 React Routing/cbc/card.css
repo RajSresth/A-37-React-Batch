@@ -1,0 +1,38 @@
+.shop-class{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+}
+
+.shop-class h1{
+    margin-bottom: 20px;
+}
+
+.card-class{
+    border: 1px solid lightgray;
+    width: 100%;
+    max-width: 300px;
+    height: 400px;
+    border-radius: 20px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 25px;
+    align-items: center;
+}
+
+.card-class div{
+    text-align: center;
+}
+
+.card-class div h2{
+    margin-bottom: 25px;
+}
+
+.card-class button{
+    width: initial;
+    cursor: pointer;
+    margin-left: 15px;
+}

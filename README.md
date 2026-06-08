@@ -974,71 +974,85 @@ Uncontrolled is simpler and faster but harder to validate.
 3. **Consume Context** – Access the value using useContext() hook in FBC (or Consumer in class components), In class based component we use **consumer** to take values from the store.
 
 ## 60. What is Redux Tool Kit?
+
 - Redux Toolkit is the official, modern, and recommended state management library by the Redux team to write Redux logic in a much simpler and efficient way.
 - It was created to solve the main problem of traditional Redux — too much boilerplate code.
 
 ## 61. What is Store in RTK?
-- The Store is the central container that holds the entire state of your application. 
+
+- The Store is the central container that holds the entire state of your application.
 - It is the single source of truth for all global data.
 - the store is created using **configureStore()**
 
 ## 62. What is slice in RTK?
+
 - A Slice is like a mini-reducer that contains its own name,state, actions, and reducers for a specific part of your application.
 - It is created using createSlice() function.
 - Instead of writing separate files for actions, action types, and reducers (like in old Redux), you write everything in one slice file.
 
 ## 63. What is actions in RTK?
+
 - An Action is a plain JavaScript object with a type (what happened) and an optional payload (data).
 
 - In RTK, actions are automatically generated from the reducers you define inside createSlice.
 
 **syntax**
+
 ```
    { type: "cart/addItem", payload: {id: 1, name: "Lays"}}
 ```
 
 ## 64. What is Reducer in RTK?
+
 A Reducer is a pure function that takes the current state and an action, and returns the new state.
 
 ## 65. What is useDispatch Hook?
+
 useDispatch is a React Redux hook that gives you access to the dispatch function. It is used to send actions to the Redux store to update the state.
 **syntax**
+
 ```
    const dipatch = useDispatch();
 ```
 
 ## 66. What is useSelector Hook?
+
 - useSelector is a React Redux hook that allows you to read data from the Redux store (state) inside your components.
 - useSelector is used to subscribe(make in sync) your component to the Redux Store.
-**syntax**
+  **syntax**
+
 ```
 const count = useSelector((state) => state.counter.value);
 ```
+
 ## 67. What is Lifting Up State?
+
 When two or more components need to share the same state, instead of keeping the state in each child, you lift (move) the state up to their closest common parent. The parent manages the state and passes it down as props.
 
 ## 68. Why Do We Lift State Up?
+
 - To share data between sibling components.
 - To avoid duplicating state.
 - To keep data flow predictable (one-way data flow).
 
 ## 69. What is useLocation in React Router Dom?
+
 - useLocation Hook is a built-in hook provided by React Router.
 - It returns the current location object, which contains information about the current URL.
 
 ## 70. How useLocation and useNavigate works together? (Simple Flow)
+
 1. You call navigate(path, { state: data }) in one component.
 2. React Router updates the URL and saves the state.
 3. In the new component, you call useLocation() to access location.state.
 
-
 ## 71. How Redux Toolkit Works?
+
 - Whenever we click on any button it will dispatch an action which will call the reducer function in the slice and update the state in the store.
 
 - Once the store is updated, useSelector gets the latest state from the store and re-renders the component.
 
 ![RTK](./RTK.png)
-
 
 ## 72. What is Custom Middleware(Local Middleware)?
 
@@ -1051,6 +1065,7 @@ When two or more components need to share the same state, instead of keeping the
   - Call APIs, etc.
 
 ## 73. What is createAsyncThunk?
+
 1. createAsyncThunk is a utility function in Redux Toolkit that simplifies handling asynchronous operations (like API calls) in Redux.
 
 2. It automatically generates three action types — pending, fulfilled, and rejected — and manages the lifecycle of async requests, reducing boilerplate code.
@@ -1058,8 +1073,8 @@ When two or more components need to share the same state, instead of keeping the
 **What does it return?**
 It returns an action creator that, when called, returns a special action with a payload promise.
 
-
 ## 74. What is useCallback hook?
+
 It is used to memoize functions so that the same function reference is passed to child components, preventing them from re-rendering unnecessarily when the parent re-renders.
 
 ```
@@ -1069,15 +1084,19 @@ It is used to memoize functions so that the same function reference is passed to
 ```
 
 ## 75. What is useMemo hook?
+
 It is used to memoize expensive calculations or large objects/arrays so they are not recomputed on every render."
+
 ```
   const val = useMemo(() => ({username: "Chombu singh", age: 24}))
 ```
 
 ## 76. What is React.memo ?
+
 1. React.memo is a performance optimization tool in React that wraps a functional component and stops it from re-rendering when its props are the same as the previous render. It does a shallow comparison of props.
 
 2. React.memo is Higher Order Component(HOC).
+
 ```
 import React from 'react';
 
@@ -1091,17 +1110,36 @@ const MyComponent = React.memo(({ name }) => {
 });
 ```
 
+## 77. Difference between CBC and FBC?
 
+**FBC:**
+
+- A normal js function which returns some piece of jsx
+- It is stateless component before 2019.We use hooks to create state inside FBC
+
+**CBC:**
+
+- A normal js class which extends React.component and has render method which returns some piece of jsx.
+- It is statefull component
+
+- Class Based Component
+- ErrorBoundary
+- React Portals
+- useId
+
+**React 19.2 new Feature**
+
+- useEffectEvent (- pitfall of closure)
+- Activity Component
 
 - useTransition
 - useDefferedValue
-- useEffectEvent
-- pitfall of closure
-- Activity Component
-- React Lazy Loading
-- React Virtualization and Hydration
-- Class Based Component
-
+- Custom Hooks
+- Higher Order Component
+- React Lazy Loading and Suspense
+- React Virtualization(Windowing)
+- React Hydration
 
 ## 77. What is Polling?
+
 RTK Query polling means automatically re-fetching a query at a fixed time interval.

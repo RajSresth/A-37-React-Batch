@@ -25,6 +25,9 @@ const Shop = () => {
           <p>Nemo illum architecto laborum sequi esse incidunt quisquam consequatur nam ratione qui.</p>
           <button onClick={() => setTheme("light")}>Light</button>
         </div>
+        <div className="shop-details">
+            <Input/>
+        </div>
       </div>
     </div>
   );

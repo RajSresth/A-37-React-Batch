@@ -1122,8 +1122,37 @@ const MyComponent = React.memo(({ name }) => {
 - A normal js class which extends React.component and has render method which returns some piece of jsx.
 - It is statefull component
 
-- Class Based Component
-- ErrorBoundary
+## 78. What is useId hook?
+useId is a React hook that generates a stable, unique ID that is consistent between server and client renders. It solves the hydration mismatch problem that occurs when you manually assign IDs.
+
+## 79. What is Error Boundary?
+- An Error Boundary is a class component that catches JavaScript errors anywhere in its child component tree during render, lifecycle methods, and constructors, prevents the entire app from crashing, and displays a fallback UI instead.
+- It uses two lifecycle methods:
+  - getDerivedStateFromError - renders fallback UI
+  - componentDidCatch - logs the error to a service
+
+## 80. What is React Error Boundary Package?
+- ErrorBoundary Component
+- fallback
+- fallbackRender
+- FallbackComponent
+- onError
+- onReset
+- useErrorBoundary Hook (for api calls error, event listeners)
+- getErrorMessage
+- withErrorBoundary HOC
+- resetKeys
+
+## 81. What is HOC?
+A component which takes another component and must return enhanced component.
+ componet => HOC => Enhanced Component
+
+
+
+
+
+
+
 - React Portals
 - useId
 

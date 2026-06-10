@@ -21,6 +21,7 @@ import store from "./Topic-14 React Routing/redux/store";
 import { userApi } from "./Topic-14 React Routing/redux/userApi";
 import "./Topic-14 React Routing/redux/PostApi.js"; // this registers getAllComments on userApi
 import ShopClass from "./Topic-14 React Routing/cbc/ShopClass.jsx";
+import { ErrorBoundary } from "react-error-boundary";
 
 // prefetch before your react app render
 store.dispatch(
@@ -31,30 +32,33 @@ store.dispatch(
 );
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <AuthProvider>
-      <ThemeProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<ProtectedRoute />}>
-              <Route path="/" element={<App />}>
-                <Route index element={<Home />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="shop" element={<Shop />} />
-                {/* <Route path="shop" element={<ShopClass />} /> */}
-                <Route path="order" element={<Order />} />
-                <Route path="products/:productId" element={<ProductPage />} />
-                <Route path="cart" element={<Cart />} />
+  <ErrorBoundary
+    fallback={<h2>Oops! Something went wrong</h2>}
+  >
+    <Provider store={store}>
+      <AuthProvider>
+        <ThemeProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/" element={<App />}>
+                  <Route index element={<Home />} />
+                  <Route path="profile" element={<Profile />} />
+                  <Route path="shop" element={<Shop />} />
+                  {/* <Route path="shop" element={<ShopClass />} /> */}
+                  <Route path="order" element={<Order />} />
+                  <Route path="products/:productId" element={<ProductPage />} />
+                  <Route path="cart" element={<Cart />} />
+                </Route>
               </Route>
-            </Route>
 
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </AuthProvider>
-    ,
-  </Provider>,
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </AuthProvider>    
+    </Provider>
+ </ErrorBoundary>
 );

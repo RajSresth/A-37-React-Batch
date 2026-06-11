@@ -1123,15 +1123,18 @@ const MyComponent = React.memo(({ name }) => {
 - It is statefull component
 
 ## 78. What is useId hook?
+
 useId is a React hook that generates a stable, unique ID that is consistent between server and client renders. It solves the hydration mismatch problem that occurs when you manually assign IDs.
 
 ## 79. What is Error Boundary?
+
 - An Error Boundary is a class component that catches JavaScript errors anywhere in its child component tree during render, lifecycle methods, and constructors, prevents the entire app from crashing, and displays a fallback UI instead.
 - It uses two lifecycle methods:
   - getDerivedStateFromError - renders fallback UI
   - componentDidCatch - logs the error to a service
 
 ## 80. What is React Error Boundary Package?
+
 - ErrorBoundary Component
 - fallback
 - fallbackRender
@@ -1144,14 +1147,34 @@ useId is a React hook that generates a stable, unique ID that is consistent betw
 - resetKeys
 
 ## 81. What is HOC?
+
 A component which takes another component and must return enhanced component.
- componet => HOC => Enhanced Component
+componet => HOC => Enhanced Component
 
+## 82. What is React Portal?
 
+React Portal is a way to render a child component outside its parent's DOM hierarchy while keeping it inside React's component tree.
 
+```
+import { createPortal } from 'react-dom';
 
+function Modal({ children }) {
+  return createPortal(
+    <div className="modal">{children}</div>,
+    document.body
+  );
+}
+```
 
+## 83. What is Activity Component?
 
+<Activity> lets you hide and restore the UI and internal state of its children.
+
+```
+<Activity mode={status? "visible" : "hidden"}>
+  <Sidebar />
+</Activity>
+```
 
 - React Portals
 - useId

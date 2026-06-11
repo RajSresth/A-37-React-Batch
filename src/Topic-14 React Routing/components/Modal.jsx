@@ -1,20 +1,9 @@
 import React, { useState } from "react";
 
-const Modal = ({ showModal, closeModal }) => {
+const Modal = ({closeModal}) => {
   return (
-    <div
-      className="dialog"
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.45)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1000,
-      }}
-    >
       <div
+        className="dialog"
         style={{
           background: "#fff",
           border: "0.5px solid grey",
@@ -22,7 +11,11 @@ const Modal = ({ showModal, closeModal }) => {
           padding: "1.5rem",
           width: "100%",
           maxWidth: "480px",
-          position: "relative",
+          position: "fixed",
+          zIndex:999,
+          top:"50%",
+          left: "50%",
+          transform:"translate(-50%,-50%)"
         }}
       >
         <div
@@ -52,7 +45,6 @@ const Modal = ({ showModal, closeModal }) => {
         </div>
         <div>Welcome to Our Website</div>
       </div>
-    </div>
   );
 };
 

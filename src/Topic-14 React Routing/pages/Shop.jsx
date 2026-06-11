@@ -1,72 +1,83 @@
-import React, { useEffect, useState } from "react";
+import React, { Activity,useEffect, useState,useRef, forwardRef, useImperativeHandle } from "react";
 import { useTheme } from "../store/ThemeContext";
 import Input from "../components/Input";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackUi from "../components/FallbackUi";
 import Modal from "../components/Modal";
-import { createPortal } from "react-dom";
+import {createPortal} from "react-dom";
+import ShopCard from "../components/ShopCardJs";
+import ShopCardCss from "../components/ShopCardCss";
+import ShopCardJs from "../components/ShopCardJs";
+
 
 const Shop = () => {
   const { theme, setTheme } = useTheme();
   const [status, setStatus] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
+  const [showCard, setShowCard] = useState(false)
+  const cardRef = useRef(null)
+ 
+
+  // useEffect(()=> {
+  //     const timeoutId = setTimeout(() => {
+  //           setShowModal(true)
+  //     }, 5000)
+
+  //     return () => clearTimeout(timeoutId)
+  // },[])
+
 
   useEffect(() => {
+   
     const bodyChildren = Array.from(document.body.children);
 
-    bodyChildren.forEach((child) => {
-      if (showModal) {
-        if (!child.classList.contains("dialog")) {
-          child.setAttribute("inert", "");
-          child.setAttribute("aria-hidden", "true");
+    bodyChildren.forEach(element => {
+      if(showModal)
+      {
+        if(!element.className.includes("dialog"))
+        {
+          element.setAttribute("arial-hidden",true);
+          element.setAttribute("inert",true);
         }
-      } else {
-        child.removeAttribute("inert");
-        child.removeAttribute("aria-hidden");
       }
-    });
-  }, [showModal]);
+      else{
+        element.removeAttribute("arial-hidden");
+        element.removeAttribute("inert");
+      }
+    })
+  },[showModal])
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 5000);
 
-    return () => clearTimeout(timer);
-  }, []);
+
+  const handleClick = () => {
+    console.log(cardRef.current)
+    if(cardRef.current.className.includes("hide"))
+    {
+      cardRef.current.classList.remove("hide");
+    }
+    else{
+      cardRef.current.classList.add("hide");
+    }
+  }
+
+
 
   return (
     <div id="shop" className={theme}>
       <div className="center-container">
-        <div className="shop-details">
-          <h2>Welcome to Shop Page</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo illum
-            architecto laborum sequi esse incidunt quisquam consequatur nam
-            ratione qui.
-          </p>
-
-          <p>
-            Nemo illum architecto laborum sequi esse incidunt quisquam
-            consequatur nam ratione qui.
-          </p>
-
-          <button onClick={() => setTheme("dark")}>Dark</button>
+        
+        <Activity mode={showCard?"visible": "hidden"}>
+            <ShopCardJs />
+        </Activity>
+       <div className="shop-details">
+          <button onClick={() => setShowCard(!showCard)}>Toggle JS</button> <br />
+          <button onClick={handleClick}>Toggle CSS</button> 
+         
         </div>
-        <div className="shop-details">
-          <h2>Welcome to Shop Page</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo illum
-            architecto laborum sequi esse incidunt quisquam consequatur nam
-            ratione qui.
-          </p>
 
-          <p>
-            Nemo illum architecto laborum sequi esse incidunt quisquam
-            consequatur nam ratione qui.
-          </p>
-          <button onClick={() => setTheme("light")}>Light</button>
-        </div>
+      {/* css conditional rendering */}
+       {/* <ShopCardCss cardRef={cardRef} />  */}
+       
         <div className="shop-details">
           <Input
             labelName="Username"
@@ -77,11 +88,16 @@ const Shop = () => {
             resetKeys={[status]}
           />
         </div>
-        {showModal &&
-          createPortal(<Modal closeModal={setShowModal} />, document.body)}
+        
+       {showModal && createPortal(<Modal closeModal={setShowModal}/>, document.body)}
       </div>
     </div>
   );
 };
 
 export default Shop;
+
+
+
+// forwardRef()
+// useImperativeHandle()
